@@ -1,4 +1,4 @@
-# hey there, i'm Türkay 👋
+# hey there, i'm Türkay ⚡
 
 i like turning ideas into projects — designing the architecture, building it, and putting it through tests to see what actually works.
 
