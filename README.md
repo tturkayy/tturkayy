@@ -1,3 +1,10 @@
+<div align="center">
+  <a href="https://tturkayy.github.io/" target="_blank" rel="noopener noreferrer">
+    <img src="dist/github-contribution-grid-snake.svg" alt="snake contribution grid" width="100%">
+  </a>
+</div>
+
+<br>
 
 # hey there, i am Türkay 👋
 
