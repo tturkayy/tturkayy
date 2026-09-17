@@ -55,39 +55,31 @@ def generate_svg():
     svg.append('  <defs>')
     svg.append(f'    <linearGradient id="gLoss" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="{c_rose}"/><stop offset="100%" stop-color="{c_blue}"/></linearGradient>')
     svg.append(f'    <linearGradient id="gGrad" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="{c_amber}"/><stop offset="100%" stop-color="{c_green}"/></linearGradient>')
-    svg.append(f'    <linearGradient id="gBeam" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="{c_blue}" stop-opacity="0"/><stop offset="50%" stop-color="{c_blue}" stop-opacity="0.25"/><stop offset="100%" stop-color="{c_blue}" stop-opacity="0"/></linearGradient>')
-    
-    svg.append('    <style>')
-    svg.append(f'      .mono {{ font-family: ui-monospace, monospace; font-size: 11px; fill: {c_muted}; }}')
-    svg.append(f'      .mono-title {{ font-family: ui-monospace, monospace; font-size: 11px; font-weight: 700; fill: {c_text}; }}')
-    svg.append(f'      .mono-val {{ font-family: ui-monospace, monospace; font-size: 15px; font-weight: 700; fill: {c_text}; }}')
-    svg.append(f'      .mono-sm {{ font-family: ui-monospace, monospace; font-size: 9.5px; fill: {c_muted}; }}')
-    svg.append(f'      .tag {{ font-family: ui-monospace, monospace; font-size: 9px; font-weight: 700; }}')
-    svg.append('      @keyframes pulseDot { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }')
-    svg.append('      .live-dot { animation: pulseDot 1.8s infinite ease-in-out; }')
-    svg.append(f'      @keyframes sweep {{ 0% {{ transform: translateX(-40px); }} 100% {{ transform: translateX({grid_w + 60:.0f}px); }} }}')
-    svg.append('      .scanner {{ animation: sweep 5.5s cubic-bezier(0.4, 0, 0.2, 1) infinite; }}')
-    svg.append('    </style>')
+    svg.append(f'    <linearGradient id="gBeam" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="{c_blue}" stop-opacity="0"/><stop offset="50%" stop-color="{c_blue}" stop-opacity="0.35"/><stop offset="100%" stop-color="{c_blue}" stop-opacity="0"/></linearGradient>')
     svg.append('  </defs>')
 
-    # Background
+    # Ana Çerçeve
     svg.append(f'  <rect width="{width}" height="{height}" rx="12" fill="{c_bg}" stroke="{c_border}" stroke-width="1.2"/>')
 
-    # Top Bar
+    # Top Bar: Status
     svg.append(f'  <rect x="0" y="0" width="{width}" height="42" fill="{c_card}" rx="12" />')
     svg.append(f'  <rect x="0" y="32" width="{width}" height="10" fill="{c_card}" />')
     svg.append(f'  <line x1="0" y1="42" x2="{width}" y2="42" stroke="{c_border}" stroke-width="1"/>')
 
-    svg.append(f'  <circle cx="28" cy="21" r="4.5" fill="{c_green}" class="live-dot"/>')
-    svg.append(f'  <text x="40" y="25" class="mono-title">MONITOR::LIVE</text>')
-    svg.append(f'  <text x="135" y="25" class="mono">epoch: 84/100 | step: 42,800 | lr: 1.2e-4 (cosine) | opt: adamw</text>')
-    svg.append(f'  <text x="{width - 24}" y="25" text-anchor="end" class="mono-title" fill="{c_blue}">TARGET: OPTICAL_LATENT_SPACE</text>')
+    # Yanıp sönen yeşil canlı durum ışığı (SMIL)
+    svg.append(f'  <circle cx="28" cy="21" r="4.5" fill="{c_green}">')
+    svg.append(f'    <animate attributeName="opacity" values="1;0.2;1" dur="2s" repeatCount="indefinite" />')
+    svg.append(f'  </circle>')
 
-    # SOL: Commit Tensor
+    svg.append(f'  <text x="40" y="25" font-family="ui-monospace, monospace" font-size="11" font-weight="700" fill="{c_text}">MONITOR::LIVE</text>')
+    svg.append(f'  <text x="135" y="25" font-family="ui-monospace, monospace" font-size="11" fill="{c_muted}">epoch: 84/100 | step: 42,800 | lr: 1.2e-4 (cosine) | opt: adamw</text>')
+    svg.append(f'  <text x="{width - 24}" y="25" text-anchor="end" font-family="ui-monospace, monospace" font-size="11" font-weight="700" fill="{c_blue}">TARGET: OPTICAL_LATENT_SPACE</text>')
+
+    # SOL: Commit Tensor Paneli
     p_tensor_w = grid_w + 32
     svg.append(f'  <rect x="16" y="52" width="{p_tensor_w:.1f}" height="152" rx="8" fill="{c_card}" stroke="{c_border}" stroke-width="1"/>')
-    svg.append(f'  <text x="30" y="70" class="mono-title">ACTIVATION TENSOR [7, 38]</text>')
-    svg.append(f'  <text x="{p_tensor_w}" y="70" text-anchor="end" class="mono-sm">sparsity: 18.4% | active: {total_tokens} commits</text>')
+    svg.append(f'  <text x="30" y="70" font-family="ui-monospace, monospace" font-size="11" font-weight="700" fill="{c_text}">ACTIVATION TENSOR [7, 38]</text>')
+    svg.append(f'  <text x="{p_tensor_w}" y="70" text-anchor="end" font-family="ui-monospace, monospace" font-size="9.5" fill="{c_muted}">sparsity: 18.4% | active: {total_tokens} commits</text>')
 
     for idx, cell in enumerate(data):
         col = idx // rows
@@ -97,13 +89,16 @@ def generate_svg():
         lvl = min(max(cell.get("level", 0), 0), 4)
         svg.append(f'  <rect x="{cx:.1f}" y="{cy:.1f}" width="{c_sz}" height="{c_sz}" rx="2" fill="{levels[lvl]}"/>')
 
-    svg.append('  <g class="scanner">')
-    svg.append(f'    <rect x="{off_x + 6}" y="{off_y + 18}" width="34" height="{grid_h:.1f}" fill="url(#gBeam)" />')
-    svg.append('  </g>')
+    # Tensor tarama huzmesi (SMIL animateTransform ile GitHub uyumlu akıcı geçiş)
+    svg.append(f'  <g transform="translate(0, 0)">')
+    svg.append(f'    <rect x="{off_x + 6}" y="{off_y + 18}" width="42" height="{grid_h:.1f}" fill="url(#gBeam)">')
+    svg.append(f'      <animateTransform attributeName="transform" type="translate" from="-50 0" to="{grid_w + 60:.0f} 0" dur="4.5s" repeatCount="indefinite" />')
+    svg.append(f'    </rect>')
+    svg.append(f'  </g>')
 
-    svg.append(f'  <text x="30" y="193" class="mono-sm">input_dim: 266 feat | norm: layernorm | activation: gelu | throughput: 1.84k toks/s</text>')
+    svg.append(f'  <text x="30" y="193" font-family="ui-monospace, monospace" font-size="9.5" fill="{c_muted}">input_dim: 266 feat | norm: layernorm | activation: gelu | throughput: 1.84k toks/s</text>')
 
-    # SAĞ: Kartlar
+    # SAĞ: Metrik Kartları
     right_x = p_tensor_w + 28
     right_w = width - right_x - 16
     col_w = (right_w - 12) / 2
@@ -111,9 +106,9 @@ def generate_svg():
     # Metrik 1: Loss
     m1_x, m1_y = right_x, 52
     svg.append(f'  <rect x="{m1_x:.1f}" y="{m1_y}" width="{col_w:.1f}" height="70" rx="8" fill="{c_card}" stroke="{c_border}" stroke-width="1"/>')
-    svg.append(f'  <text x="{m1_x + 12:.1f}" y="{m1_y + 20}" class="mono-sm">TRAIN / VAL LOSS</text>')
-    svg.append(f'  <text x="{m1_x + 12:.1f}" y="{m1_y + 40}" class="mono-val" fill="{c_rose}">0.0382</text>')
-    svg.append(f'  <text x="{m1_x + 76:.1f}" y="{m1_y + 40}" class="mono-sm" fill="{c_muted}">val: 0.0415</text>')
+    svg.append(f'  <text x="{m1_x + 12:.1f}" y="{m1_y + 20}" font-family="ui-monospace, monospace" font-size="9.5" fill="{c_muted}">TRAIN / VAL LOSS</text>')
+    svg.append(f'  <text x="{m1_x + 12:.1f}" y="{m1_y + 40}" font-family="ui-monospace, monospace" font-size="15" font-weight="700" fill="{c_rose}">0.0382</text>')
+    svg.append(f'  <text x="{m1_x + 76:.1f}" y="{m1_y + 40}" font-family="ui-monospace, monospace" font-size="9.5" fill="{c_muted}">val: 0.0415</text>')
     pts1 = []
     for i in range(16):
         px = m1_x + col_w - 74 + (i / 15) * 62
@@ -124,9 +119,9 @@ def generate_svg():
     # Metrik 2: Grad Norm
     m2_x, m2_y = right_x + col_w + 12, 52
     svg.append(f'  <rect x="{m2_x:.1f}" y="{m2_y}" width="{col_w:.1f}" height="70" rx="8" fill="{c_card}" stroke="{c_border}" stroke-width="1"/>')
-    svg.append(f'  <text x="{m2_x + 12:.1f}" y="{m2_y + 20}" class="mono-sm">GRAD NORM (||g||)</text>')
-    svg.append(f'  <text x="{m2_x + 12:.1f}" y="{m2_y + 40}" class="mono-val" fill="{c_amber}">0.842</text>')
-    svg.append(f'  <text x="{m2_x + 72:.1f}" y="{m2_y + 40}" class="mono-sm" fill="{c_green}">+/- 0.06</text>')
+    svg.append(f'  <text x="{m2_x + 12:.1f}" y="{m2_y + 20}" font-family="ui-monospace, monospace" font-size="9.5" fill="{c_muted}">GRAD NORM (||g||)</text>')
+    svg.append(f'  <text x="{m2_x + 12:.1f}" y="{m2_y + 40}" font-family="ui-monospace, monospace" font-size="15" font-weight="700" fill="{c_amber}">0.842</text>')
+    svg.append(f'  <text x="{m2_x + 72:.1f}" y="{m2_y + 40}" font-family="ui-monospace, monospace" font-size="9.5" fill="{c_green}">+/- 0.06</text>')
     pts2 = []
     for i in range(16):
         px = m2_x + col_w - 74 + (i / 15) * 62
@@ -137,9 +132,9 @@ def generate_svg():
     # Metrik 3: PPL
     m3_x, m3_y = right_x, 134
     svg.append(f'  <rect x="{m3_x:.1f}" y="{m3_y}" width="{col_w:.1f}" height="70" rx="8" fill="{c_card}" stroke="{c_border}" stroke-width="1"/>')
-    svg.append(f'  <text x="{m3_x + 12:.1f}" y="{m3_y + 20}" class="mono-sm">PERPLEXITY (PPL)</text>')
-    svg.append(f'  <text x="{m3_x + 12:.1f}" y="{m3_y + 40}" class="mono-val" fill="{c_cyan}">1.041</text>')
-    svg.append(f'  <text x="{m3_x + 68:.1f}" y="{m3_y + 40}" class="mono-sm" fill="{c_muted}">optimal</text>')
+    svg.append(f'  <text x="{m3_x + 12:.1f}" y="{m3_y + 20}" font-family="ui-monospace, monospace" font-size="9.5" fill="{c_muted}">PERPLEXITY (PPL)</text>')
+    svg.append(f'  <text x="{m3_x + 12:.1f}" y="{m3_y + 40}" font-family="ui-monospace, monospace" font-size="15" font-weight="700" fill="{c_cyan}">1.041</text>')
+    svg.append(f'  <text x="{m3_x + 68:.1f}" y="{m3_y + 40}" font-family="ui-monospace, monospace" font-size="9.5" fill="{c_muted}">optimal</text>')
     pts3 = []
     for i in range(16):
         px = m3_x + col_w - 74 + (i / 15) * 62
@@ -150,9 +145,9 @@ def generate_svg():
     # Metrik 4: BER
     m4_x, m4_y = right_x + col_w + 12, 134
     svg.append(f'  <rect x="{m4_x:.1f}" y="{m4_y}" width="{col_w:.1f}" height="70" rx="8" fill="{c_card}" stroke="{c_border}" stroke-width="1"/>')
-    svg.append(f'  <text x="{m4_x + 12:.1f}" y="{m4_y + 20}" class="mono-sm">BER (POST-FEC)</text>')
-    svg.append(f'  <text x="{m4_x + 12:.1f}" y="{m4_y + 40}" class="mono-val" fill="{c_green}">0.00e0</text>')
-    svg.append(f'  <text x="{m4_x + 82:.1f}" y="{m4_y + 40}" class="mono-sm" fill="{c_green}">0 err / 48B</text>')
+    svg.append(f'  <text x="{m4_x + 12:.1f}" y="{m4_y + 20}" font-family="ui-monospace, monospace" font-size="9.5" fill="{c_muted}">BER (POST-FEC)</text>')
+    svg.append(f'  <text x="{m4_x + 12:.1f}" y="{m4_y + 40}" font-family="ui-monospace, monospace" font-size="15" font-weight="700" fill="{c_green}">0.00e0</text>')
+    svg.append(f'  <text x="{m4_x + 82:.1f}" y="{m4_y + 40}" font-family="ui-monospace, monospace" font-size="9.5" fill="{c_green}">0 err / 48B</text>')
     pts4 = []
     for i in range(16):
         px = m4_x + col_w - 74 + (i / 15) * 62
@@ -164,8 +159,8 @@ def generate_svg():
     b_y = 216
     b_w = width - 32
     svg.append(f'  <rect x="16" y="{b_y}" width="{b_w}" height="128" rx="8" fill="{c_card}" stroke="{c_border}" stroke-width="1"/>')
-    svg.append(f'  <text x="30" y="{b_y + 22}" class="mono-title">ENGINE STDOUT &amp; CHECKPOINTS</text>')
-    svg.append(f'  <text x="{width - 30}" y="{b_y + 22}" text-anchor="end" class="mono-sm" fill="{c_blue}">AUTOSAVE: ON (step_every=500)</text>')
+    svg.append(f'  <text x="30" y="{b_y + 22}" font-family="ui-monospace, monospace" font-size="11" font-weight="700" fill="{c_text}">ENGINE STDOUT &amp; CHECKPOINTS</text>')
+    svg.append(f'  <text x="{width - 30}" y="{b_y + 22}" text-anchor="end" font-family="ui-monospace, monospace" font-size="9.5" fill="{c_blue}">AUTOSAVE: ON (step_every=500)</text>')
     svg.append(f'  <line x1="16" y1="{b_y + 32}" x2="{width - 16}" y2="{b_y + 32}" stroke="{c_border}" stroke-width="0.8"/>')
 
     logs = [
@@ -177,10 +172,10 @@ def generate_svg():
 
     for idx, (timestamp, tag, tag_color, msg) in enumerate(logs):
         ly = b_y + 52 + idx * 19
-        svg.append(f'  <text x="30" y="{ly}" class="mono-sm" fill="{c_muted}">{timestamp}</text>')
-        svg.append(f'  <rect x="94" y="{ly - 10}" width="38" height="13" rx="3" fill="{tag_color}" fill-opacity="0.12"/>')
-        svg.append(f'  <text x="113" y="{ly}" text-anchor="middle" class="tag" fill="{tag_color}">{tag}</text>')
-        svg.append(f'  <text x="142" y="{ly}" class="mono" fill="{c_text}">{msg}</text>')
+        svg.append(f'  <text x="30" y="{ly}" font-family="ui-monospace, monospace" font-size="9.5" fill="{c_muted}">{timestamp}</text>')
+        svg.append(f'  <rect x="94" y="{ly - 10}" width="38" height="13" rx="3" fill="{tag_color}" fill-opacity="0.15"/>')
+        svg.append(f'  <text x="113" y="{ly}" text-anchor="middle" font-family="ui-monospace, monospace" font-size="9" font-weight="700" fill="{tag_color}">{tag}</text>')
+        svg.append(f'  <text x="142" y="{ly}" font-family="ui-monospace, monospace" font-size="11" fill="{c_text}">{msg}</text>')
 
     svg.append('</svg>')
 
@@ -191,4 +186,3 @@ def generate_svg():
 
 if __name__ == "__main__":
     generate_svg()
-    
