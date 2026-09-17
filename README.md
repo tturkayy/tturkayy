@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://raw.githubusercontent.com/tturkayy/tturkayy/output/neural-grid.svg" alt="neural training grid" width="100%">
+  <img src="dist/neural-grid.svg" alt="neural training grid" width="100%">
 </div>
 
 <br>
