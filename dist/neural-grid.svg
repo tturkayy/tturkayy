@@ -4,11 +4,11 @@
     <linearGradient id="gGrad" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#f59e0b"/><stop offset="100%" stop-color="#10b981"/></linearGradient>
     <linearGradient id="gBeam" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#3b82f6" stop-opacity="0"/><stop offset="50%" stop-color="#3b82f6" stop-opacity="0.25"/><stop offset="100%" stop-color="#3b82f6" stop-opacity="0"/></linearGradient>
     <style>
-      .mono { font-family: ui-monospace, SFMono-Regular, "JetBrains Mono", Menlo, Consolas, monospace; font-size: 11px; fill: #64748b; }
-      .mono-title { font-family: ui-monospace, SFMono-Regular, "JetBrains Mono", Menlo, Consolas, monospace; font-size: 11px; font-weight: 700; fill: #f1f5f9; }
-      .mono-val { font-family: ui-monospace, SFMono-Regular, "JetBrains Mono", Menlo, Consolas, monospace; font-size: 15px; font-weight: 700; fill: #f1f5f9; }
-      .mono-sm { font-family: ui-monospace, SFMono-Regular, "JetBrains Mono", Menlo, Consolas, monospace; font-size: 9.5px; fill: #64748b; }
-      .tag { font-family: ui-monospace, SFMono-Regular, monospace; font-size: 9px; font-weight: 700; }
+      .mono { font-family: ui-monospace, monospace; font-size: 11px; fill: #64748b; }
+      .mono-title { font-family: ui-monospace, monospace; font-size: 11px; font-weight: 700; fill: #f1f5f9; }
+      .mono-val { font-family: ui-monospace, monospace; font-size: 15px; font-weight: 700; fill: #f1f5f9; }
+      .mono-sm { font-family: ui-monospace, monospace; font-size: 9.5px; fill: #64748b; }
+      .tag { font-family: ui-monospace, monospace; font-size: 9px; font-weight: 700; }
       @keyframes pulseDot { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
       .live-dot { animation: pulseDot 1.8s infinite ease-in-out; }
       @keyframes sweep { 0% { transform: translateX(-40px); } 100% { transform: translateX(562px); } }
@@ -25,7 +25,7 @@
   <text x="866" y="25" text-anchor="end" class="mono-title" fill="#3b82f6">TARGET: OPTICAL_LATENT_SPACE</text>
   <rect x="16" y="52" width="533.6" height="152" rx="8" fill="#0f131d" stroke="#1a2233" stroke-width="1"/>
   <text x="30" y="70" class="mono-title">ACTIVATION TENSOR [7, 38]</text>
-  <text x="533.5999999999999" y="70" text-anchor="end" class="mono-sm">sparsity: 18.4% | active: 27 commits</text>
+  <text x="533.5999999999999" y="70" text-anchor="end" class="mono-sm">sparsity: 18.4% | active: 58 commits</text>
   <rect x="30.0" y="84.0" width="10.0" height="10.0" rx="2" fill="#111622"/>
   <rect x="30.0" y="97.2" width="10.0" height="10.0" rx="2" fill="#111622"/>
   <rect x="30.0" y="110.4" width="10.0" height="10.0" rx="2" fill="#111622"/>
@@ -265,37 +265,37 @@
   <rect x="465.6" y="150.0" width="10.0" height="10.0" rx="2" fill="#111622"/>
   <rect x="465.6" y="163.2" width="10.0" height="10.0" rx="2" fill="#111622"/>
   <rect x="478.8" y="84.0" width="10.0" height="10.0" rx="2" fill="#111622"/>
-  <rect x="478.8" y="97.2" width="10.0" height="10.0" rx="2" fill="#60a5fa"/>
+  <rect x="478.8" y="97.2" width="10.0" height="10.0" rx="2" fill="#3b82f6"/>
   <rect x="478.8" y="110.4" width="10.0" height="10.0" rx="2" fill="#60a5fa"/>
   <rect x="478.8" y="123.6" width="10.0" height="10.0" rx="2" fill="#111622"/>
   <rect x="478.8" y="136.8" width="10.0" height="10.0" rx="2" fill="#111622"/>
   <rect x="478.8" y="150.0" width="10.0" height="10.0" rx="2" fill="#111622"/>
   <rect x="478.8" y="163.2" width="10.0" height="10.0" rx="2" fill="#111622"/>
-  <rect x="492.0" y="84.0" width="10.0" height="10.0" rx="2" fill="#60a5fa"/>
+  <rect x="492.0" y="84.0" width="10.0" height="10.0" rx="2" fill="#3b82f6"/>
   <rect x="492.0" y="97.2" width="10.0" height="10.0" rx="2" fill="#111622"/>
-  <rect x="492.0" y="110.4" width="10.0" height="10.0" rx="2" fill="#3b82f6"/>
-  <rect x="492.0" y="123.6" width="10.0" height="10.0" rx="2" fill="#2563eb"/>
+  <rect x="492.0" y="110.4" width="10.0" height="10.0" rx="2" fill="#2563eb"/>
+  <rect x="492.0" y="123.6" width="10.0" height="10.0" rx="2" fill="#1d2e4a"/>
   <rect x="492.0" y="136.8" width="10.0" height="10.0" rx="2" fill="#111622"/>
-  <rect x="492.0" y="150.0" width="10.0" height="10.0" rx="2" fill="#2563eb"/>
-  <rect x="492.0" y="163.2" width="10.0" height="10.0" rx="2" fill="#2563eb"/>
-  <rect x="505.2" y="84.0" width="10.0" height="10.0" rx="2" fill="#3b82f6"/>
-  <rect x="505.2" y="97.2" width="10.0" height="10.0" rx="2" fill="#2563eb"/>
+  <rect x="492.0" y="150.0" width="10.0" height="10.0" rx="2" fill="#1d2e4a"/>
+  <rect x="492.0" y="163.2" width="10.0" height="10.0" rx="2" fill="#1d2e4a"/>
+  <rect x="505.2" y="84.0" width="10.0" height="10.0" rx="2" fill="#2563eb"/>
+  <rect x="505.2" y="97.2" width="10.0" height="10.0" rx="2" fill="#1d2e4a"/>
   <rect x="505.2" y="110.4" width="10.0" height="10.0" rx="2" fill="#111622"/>
   <rect x="505.2" y="123.6" width="10.0" height="10.0" rx="2" fill="#111622"/>
   <rect x="505.2" y="136.8" width="10.0" height="10.0" rx="2" fill="#111622"/>
   <rect x="505.2" y="150.0" width="10.0" height="10.0" rx="2" fill="#111622"/>
   <rect x="505.2" y="163.2" width="10.0" height="10.0" rx="2" fill="#111622"/>
   <rect x="518.4" y="84.0" width="10.0" height="10.0" rx="2" fill="#111622"/>
-  <rect x="518.4" y="97.2" width="10.0" height="10.0" rx="2" fill="#3b82f6"/>
+  <rect x="518.4" y="97.2" width="10.0" height="10.0" rx="2" fill="#2563eb"/>
   <rect x="518.4" y="110.4" width="10.0" height="10.0" rx="2" fill="#111622"/>
   <rect x="518.4" y="123.6" width="10.0" height="10.0" rx="2" fill="#111622"/>
   <rect x="518.4" y="136.8" width="10.0" height="10.0" rx="2" fill="#111622"/>
-  <rect x="518.4" y="150.0" width="10.0" height="10.0" rx="2" fill="#2563eb"/>
+  <rect x="518.4" y="150.0" width="10.0" height="10.0" rx="2" fill="#1d2e4a"/>
   <rect x="518.4" y="163.2" width="10.0" height="10.0" rx="2" fill="#60a5fa"/>
   <g class="scanner">
     <rect x="30" y="84" width="34" height="92.4" fill="url(#gBeam)" />
   </g>
-  <text x="30" y="193" class="mono-sm">input_dim: 266 feat &bull; norm: layernorm &bull; activation: gelu &bull; throughput: 1.84k toks/s</text>
+  <text x="30" y="193" class="mono-sm">input_dim: 266 feat | norm: layernorm | activation: gelu | throughput: 1.84k toks/s</text>
   <rect x="561.6" y="52" width="150.2" height="70" rx="8" fill="#0f131d" stroke="#1a2233" stroke-width="1"/>
   <text x="573.6" y="72" class="mono-sm">TRAIN / VAL LOSS</text>
   <text x="573.6" y="92" class="mono-val" fill="#f43f5e">0.0382</text>
@@ -304,7 +304,7 @@
   <rect x="723.8" y="52" width="150.2" height="70" rx="8" fill="#0f131d" stroke="#1a2233" stroke-width="1"/>
   <text x="735.8" y="72" class="mono-sm">GRAD NORM (||g||)</text>
   <text x="735.8" y="92" class="mono-val" fill="#f59e0b">0.842</text>
-  <text x="795.8" y="92" class="mono-sm" fill="#10b981">&plusmn;0.06</text>
+  <text x="795.8" y="92" class="mono-sm" fill="#10b981">+/- 0.06</text>
   <polyline points="800.0,94.0 804.1,93.5 808.3,95.8 812.4,95.1 816.5,92.1 820.7,93.2 824.8,100.4 828.9,107.0 833.1,106.2 837.2,100.0 841.3,96.0 845.5,96.8 849.6,97.2 853.7,93.5 857.9,89.7 862.0,92.3" fill="none" stroke="url(#gGrad)" stroke-width="1.8" stroke-linecap="round"/>
   <rect x="561.6" y="134" width="150.2" height="70" rx="8" fill="#0f131d" stroke="#1a2233" stroke-width="1"/>
   <text x="573.6" y="154" class="mono-sm">PERPLEXITY (PPL)</text>
@@ -317,7 +317,7 @@
   <text x="805.8" y="174" class="mono-sm" fill="#10b981">0 err / 48B</text>
   <polyline points="800.0,181.5 804.1,181.5 808.3,181.5 812.4,181.5 816.5,181.5 820.7,181.5 824.8,183.5 828.9,183.5 833.1,183.5 837.2,183.5 841.3,183.5 845.5,183.5 849.6,183.5 853.7,183.5 857.9,183.5 862.0,183.5" fill="none" stroke="#10b981" stroke-width="1.8" stroke-linecap="round"/>
   <rect x="16" y="216" width="858" height="128" rx="8" fill="#0f131d" stroke="#1a2233" stroke-width="1"/>
-  <text x="30" y="238" class="mono-title">ENGINE STDOUT & CHECKPOINTS</text>
+  <text x="30" y="238" class="mono-title">ENGINE STDOUT &amp; CHECKPOINTS</text>
   <text x="860" y="238" text-anchor="end" class="mono-sm" fill="#3b82f6">AUTOSAVE: ON (step_every=500)</text>
   <line x1="16" y1="248" x2="874" y2="248" stroke="#1a2233" stroke-width="0.8"/>
   <text x="30" y="268" class="mono-sm" fill="#64748b">[14:22:04]</text>
@@ -335,5 +335,5 @@
   <text x="30" y="325" class="mono-sm" fill="#64748b">[14:22:49]</text>
   <rect x="94" y="315" width="38" height="13" rx="3" fill="#06b6d4" fill-opacity="0.12"/>
   <text x="113" y="325" text-anchor="middle" class="tag" fill="#06b6d4">SAVE</text>
-  <text x="142" y="325" class="mono" fill="#f1f5f9">Checkpoint exported: model_v1_converged.onnx (FP32 | 148 KB) -> deployed to tturkayy.github.io</text>
+  <text x="142" y="325" class="mono" fill="#f1f5f9">Checkpoint exported: model_v1_converged.onnx (FP32 | 148 KB) -&gt; deployed to tturkayy.github.io</text>
 </svg>
