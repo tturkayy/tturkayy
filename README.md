@@ -1,5 +1,7 @@
 <div align="center">
-  <img src="https://github.com/tturkayy/tturkayy/blob/main/dist/neural-grid.svg" alt="neural training grid" width="100%">
+  <a href="https://tturkayy.github.io/" target="_blank" rel="noopener noreferrer">
+    <img src="dist/neural-grid.svg" alt="neural training grid" width="100%">
+  </a>
 </div>
 
 <br>
@@ -10,7 +12,7 @@ i design architectures, train models, and build tools to see what actually works
 
 most of my active experiments, live interactive demos, publications, and open-source projects live on my portfolio:
 
-**[https://tturkayy.github.io/](https://tturkayy.github.io/)**
+> **[tturkayy.github.io ↗](https://tturkayy.github.io/)**
 
 ---
 
