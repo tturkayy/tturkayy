@@ -2,30 +2,21 @@
   <defs>
     <linearGradient id="gLoss" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#f43f5e"/><stop offset="100%" stop-color="#3b82f6"/></linearGradient>
     <linearGradient id="gGrad" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#f59e0b"/><stop offset="100%" stop-color="#10b981"/></linearGradient>
-    <linearGradient id="gBeam" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#3b82f6" stop-opacity="0"/><stop offset="50%" stop-color="#3b82f6" stop-opacity="0.25"/><stop offset="100%" stop-color="#3b82f6" stop-opacity="0"/></linearGradient>
-    <style>
-      .mono { font-family: ui-monospace, monospace; font-size: 11px; fill: #64748b; }
-      .mono-title { font-family: ui-monospace, monospace; font-size: 11px; font-weight: 700; fill: #f1f5f9; }
-      .mono-val { font-family: ui-monospace, monospace; font-size: 15px; font-weight: 700; fill: #f1f5f9; }
-      .mono-sm { font-family: ui-monospace, monospace; font-size: 9.5px; fill: #64748b; }
-      .tag { font-family: ui-monospace, monospace; font-size: 9px; font-weight: 700; }
-      @keyframes pulseDot { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
-      .live-dot { animation: pulseDot 1.8s infinite ease-in-out; }
-      @keyframes sweep { 0% { transform: translateX(-40px); } 100% { transform: translateX(562px); } }
-      .scanner {{ animation: sweep 5.5s cubic-bezier(0.4, 0, 0.2, 1) infinite; }}
-    </style>
+    <linearGradient id="gBeam" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#3b82f6" stop-opacity="0"/><stop offset="50%" stop-color="#3b82f6" stop-opacity="0.35"/><stop offset="100%" stop-color="#3b82f6" stop-opacity="0"/></linearGradient>
   </defs>
   <rect width="890" height="360" rx="12" fill="#07090e" stroke="#1a2233" stroke-width="1.2"/>
   <rect x="0" y="0" width="890" height="42" fill="#0f131d" rx="12" />
   <rect x="0" y="32" width="890" height="10" fill="#0f131d" />
   <line x1="0" y1="42" x2="890" y2="42" stroke="#1a2233" stroke-width="1"/>
-  <circle cx="28" cy="21" r="4.5" fill="#10b981" class="live-dot"/>
-  <text x="40" y="25" class="mono-title">MONITOR::LIVE</text>
-  <text x="135" y="25" class="mono">epoch: 84/100 | step: 42,800 | lr: 1.2e-4 (cosine) | opt: adamw</text>
-  <text x="866" y="25" text-anchor="end" class="mono-title" fill="#3b82f6">TARGET: OPTICAL_LATENT_SPACE</text>
+  <circle cx="28" cy="21" r="4.5" fill="#10b981">
+    <animate attributeName="opacity" values="1;0.2;1" dur="2s" repeatCount="indefinite" />
+  </circle>
+  <text x="40" y="25" font-family="ui-monospace, monospace" font-size="11" font-weight="700" fill="#f1f5f9">MONITOR::LIVE</text>
+  <text x="135" y="25" font-family="ui-monospace, monospace" font-size="11" fill="#64748b">epoch: 84/100 | step: 42,800 | lr: 1.2e-4 (cosine) | opt: adamw</text>
+  <text x="866" y="25" text-anchor="end" font-family="ui-monospace, monospace" font-size="11" font-weight="700" fill="#3b82f6">TARGET: OPTICAL_LATENT_SPACE</text>
   <rect x="16" y="52" width="533.6" height="152" rx="8" fill="#0f131d" stroke="#1a2233" stroke-width="1"/>
-  <text x="30" y="70" class="mono-title">ACTIVATION TENSOR [7, 38]</text>
-  <text x="533.5999999999999" y="70" text-anchor="end" class="mono-sm">sparsity: 18.4% | active: 58 commits</text>
+  <text x="30" y="70" font-family="ui-monospace, monospace" font-size="11" font-weight="700" fill="#f1f5f9">ACTIVATION TENSOR [7, 38]</text>
+  <text x="533.5999999999999" y="70" text-anchor="end" font-family="ui-monospace, monospace" font-size="9.5" fill="#64748b">sparsity: 18.4% | active: 58 commits</text>
   <rect x="30.0" y="84.0" width="10.0" height="10.0" rx="2" fill="#111622"/>
   <rect x="30.0" y="97.2" width="10.0" height="10.0" rx="2" fill="#111622"/>
   <rect x="30.0" y="110.4" width="10.0" height="10.0" rx="2" fill="#111622"/>
@@ -292,48 +283,50 @@
   <rect x="518.4" y="136.8" width="10.0" height="10.0" rx="2" fill="#111622"/>
   <rect x="518.4" y="150.0" width="10.0" height="10.0" rx="2" fill="#1d2e4a"/>
   <rect x="518.4" y="163.2" width="10.0" height="10.0" rx="2" fill="#60a5fa"/>
-  <g class="scanner">
-    <rect x="30" y="84" width="34" height="92.4" fill="url(#gBeam)" />
+  <g transform="translate(0, 0)">
+    <rect x="30" y="84" width="42" height="92.4" fill="url(#gBeam)">
+      <animateTransform attributeName="transform" type="translate" from="-50 0" to="562 0" dur="4.5s" repeatCount="indefinite" />
+    </rect>
   </g>
-  <text x="30" y="193" class="mono-sm">input_dim: 266 feat | norm: layernorm | activation: gelu | throughput: 1.84k toks/s</text>
+  <text x="30" y="193" font-family="ui-monospace, monospace" font-size="9.5" fill="#64748b">input_dim: 266 feat | norm: layernorm | activation: gelu | throughput: 1.84k toks/s</text>
   <rect x="561.6" y="52" width="150.2" height="70" rx="8" fill="#0f131d" stroke="#1a2233" stroke-width="1"/>
-  <text x="573.6" y="72" class="mono-sm">TRAIN / VAL LOSS</text>
-  <text x="573.6" y="92" class="mono-val" fill="#f43f5e">0.0382</text>
-  <text x="637.6" y="92" class="mono-sm" fill="#64748b">val: 0.0415</text>
+  <text x="573.6" y="72" font-family="ui-monospace, monospace" font-size="9.5" fill="#64748b">TRAIN / VAL LOSS</text>
+  <text x="573.6" y="92" font-family="ui-monospace, monospace" font-size="15" font-weight="700" fill="#f43f5e">0.0382</text>
+  <text x="637.6" y="92" font-family="ui-monospace, monospace" font-size="9.5" fill="#64748b">val: 0.0415</text>
   <polyline points="637.8,88.0 641.9,90.0 646.1,92.0 650.2,94.4 654.3,97.2 658.5,100.1 662.6,102.3 666.7,103.5 670.9,103.6 675.0,103.0 679.1,102.2 683.3,102.0 687.4,102.7 691.5,104.0 695.7,105.6 699.8,106.9" fill="none" stroke="url(#gLoss)" stroke-width="1.8" stroke-linecap="round"/>
   <rect x="723.8" y="52" width="150.2" height="70" rx="8" fill="#0f131d" stroke="#1a2233" stroke-width="1"/>
-  <text x="735.8" y="72" class="mono-sm">GRAD NORM (||g||)</text>
-  <text x="735.8" y="92" class="mono-val" fill="#f59e0b">0.842</text>
-  <text x="795.8" y="92" class="mono-sm" fill="#10b981">+/- 0.06</text>
+  <text x="735.8" y="72" font-family="ui-monospace, monospace" font-size="9.5" fill="#64748b">GRAD NORM (||g||)</text>
+  <text x="735.8" y="92" font-family="ui-monospace, monospace" font-size="15" font-weight="700" fill="#f59e0b">0.842</text>
+  <text x="795.8" y="92" font-family="ui-monospace, monospace" font-size="9.5" fill="#10b981">+/- 0.06</text>
   <polyline points="800.0,94.0 804.1,93.5 808.3,95.8 812.4,95.1 816.5,92.1 820.7,93.2 824.8,100.4 828.9,107.0 833.1,106.2 837.2,100.0 841.3,96.0 845.5,96.8 849.6,97.2 853.7,93.5 857.9,89.7 862.0,92.3" fill="none" stroke="url(#gGrad)" stroke-width="1.8" stroke-linecap="round"/>
   <rect x="561.6" y="134" width="150.2" height="70" rx="8" fill="#0f131d" stroke="#1a2233" stroke-width="1"/>
-  <text x="573.6" y="154" class="mono-sm">PERPLEXITY (PPL)</text>
-  <text x="573.6" y="174" class="mono-val" fill="#06b6d4">1.041</text>
-  <text x="629.6" y="174" class="mono-sm" fill="#64748b">optimal</text>
+  <text x="573.6" y="154" font-family="ui-monospace, monospace" font-size="9.5" fill="#64748b">PERPLEXITY (PPL)</text>
+  <text x="573.6" y="174" font-family="ui-monospace, monospace" font-size="15" font-weight="700" fill="#06b6d4">1.041</text>
+  <text x="629.6" y="174" font-family="ui-monospace, monospace" font-size="9.5" fill="#64748b">optimal</text>
   <polyline points="637.8,174.0 641.9,174.9 646.1,176.4 650.2,178.7 654.3,181.0 658.5,182.3 662.6,182.4 666.7,182.1 670.9,182.3 675.0,183.6 679.1,185.3 683.3,186.3 687.4,186.1 691.5,185.3 695.7,184.9 699.8,185.6" fill="none" stroke="#06b6d4" stroke-width="1.8" stroke-linecap="round"/>
   <rect x="723.8" y="134" width="150.2" height="70" rx="8" fill="#0f131d" stroke="#1a2233" stroke-width="1"/>
-  <text x="735.8" y="154" class="mono-sm">BER (POST-FEC)</text>
-  <text x="735.8" y="174" class="mono-val" fill="#10b981">0.00e0</text>
-  <text x="805.8" y="174" class="mono-sm" fill="#10b981">0 err / 48B</text>
+  <text x="735.8" y="154" font-family="ui-monospace, monospace" font-size="9.5" fill="#64748b">BER (POST-FEC)</text>
+  <text x="735.8" y="174" font-family="ui-monospace, monospace" font-size="15" font-weight="700" fill="#10b981">0.00e0</text>
+  <text x="805.8" y="174" font-family="ui-monospace, monospace" font-size="9.5" fill="#10b981">0 err / 48B</text>
   <polyline points="800.0,181.5 804.1,181.5 808.3,181.5 812.4,181.5 816.5,181.5 820.7,181.5 824.8,183.5 828.9,183.5 833.1,183.5 837.2,183.5 841.3,183.5 845.5,183.5 849.6,183.5 853.7,183.5 857.9,183.5 862.0,183.5" fill="none" stroke="#10b981" stroke-width="1.8" stroke-linecap="round"/>
   <rect x="16" y="216" width="858" height="128" rx="8" fill="#0f131d" stroke="#1a2233" stroke-width="1"/>
-  <text x="30" y="238" class="mono-title">ENGINE STDOUT &amp; CHECKPOINTS</text>
-  <text x="860" y="238" text-anchor="end" class="mono-sm" fill="#3b82f6">AUTOSAVE: ON (step_every=500)</text>
+  <text x="30" y="238" font-family="ui-monospace, monospace" font-size="11" font-weight="700" fill="#f1f5f9">ENGINE STDOUT &amp; CHECKPOINTS</text>
+  <text x="860" y="238" text-anchor="end" font-family="ui-monospace, monospace" font-size="9.5" fill="#3b82f6">AUTOSAVE: ON (step_every=500)</text>
   <line x1="16" y1="248" x2="874" y2="248" stroke="#1a2233" stroke-width="0.8"/>
-  <text x="30" y="268" class="mono-sm" fill="#64748b">[14:22:04]</text>
-  <rect x="94" y="258" width="38" height="13" rx="3" fill="#3b82f6" fill-opacity="0.12"/>
-  <text x="113" y="268" text-anchor="middle" class="tag" fill="#3b82f6">INFO</text>
-  <text x="142" y="268" class="mono" fill="#f1f5f9">Initialized 1D-CNN backbone (kernel=3, channels=[32, 64, 128]) - ONNX WebGPU runtime locked</text>
-  <text x="30" y="287" class="mono-sm" fill="#64748b">[14:22:18]</text>
-  <rect x="94" y="277" width="38" height="13" rx="3" fill="#f59e0b" fill-opacity="0.12"/>
-  <text x="113" y="287" text-anchor="middle" class="tag" fill="#f59e0b">STEP</text>
-  <text x="142" y="287" class="mono" fill="#f1f5f9">Forward-backward pass: 96 APSK symbols decoded; cross-entropy loss converged below 0.040</text>
-  <text x="30" y="306" class="mono-sm" fill="#64748b">[14:22:32]</text>
-  <rect x="94" y="296" width="38" height="13" rx="3" fill="#10b981" fill-opacity="0.12"/>
-  <text x="113" y="306" text-anchor="middle" class="tag" fill="#10b981">FEC</text>
-  <text x="142" y="306" class="mono" fill="#f1f5f9">Reed-Solomon RS(48,40) Galois 256 syndrome check cleared: 0 corrupted bytes, payload valid</text>
-  <text x="30" y="325" class="mono-sm" fill="#64748b">[14:22:49]</text>
-  <rect x="94" y="315" width="38" height="13" rx="3" fill="#06b6d4" fill-opacity="0.12"/>
-  <text x="113" y="325" text-anchor="middle" class="tag" fill="#06b6d4">SAVE</text>
-  <text x="142" y="325" class="mono" fill="#f1f5f9">Checkpoint exported: model_v1_converged.onnx (FP32 | 148 KB) -&gt; deployed to tturkayy.github.io</text>
+  <text x="30" y="268" font-family="ui-monospace, monospace" font-size="9.5" fill="#64748b">[14:22:04]</text>
+  <rect x="94" y="258" width="38" height="13" rx="3" fill="#3b82f6" fill-opacity="0.15"/>
+  <text x="113" y="268" text-anchor="middle" font-family="ui-monospace, monospace" font-size="9" font-weight="700" fill="#3b82f6">INFO</text>
+  <text x="142" y="268" font-family="ui-monospace, monospace" font-size="11" fill="#f1f5f9">Initialized 1D-CNN backbone (kernel=3, channels=[32, 64, 128]) - ONNX WebGPU runtime locked</text>
+  <text x="30" y="287" font-family="ui-monospace, monospace" font-size="9.5" fill="#64748b">[14:22:18]</text>
+  <rect x="94" y="277" width="38" height="13" rx="3" fill="#f59e0b" fill-opacity="0.15"/>
+  <text x="113" y="287" text-anchor="middle" font-family="ui-monospace, monospace" font-size="9" font-weight="700" fill="#f59e0b">STEP</text>
+  <text x="142" y="287" font-family="ui-monospace, monospace" font-size="11" fill="#f1f5f9">Forward-backward pass: 96 APSK symbols decoded; cross-entropy loss converged below 0.040</text>
+  <text x="30" y="306" font-family="ui-monospace, monospace" font-size="9.5" fill="#64748b">[14:22:32]</text>
+  <rect x="94" y="296" width="38" height="13" rx="3" fill="#10b981" fill-opacity="0.15"/>
+  <text x="113" y="306" text-anchor="middle" font-family="ui-monospace, monospace" font-size="9" font-weight="700" fill="#10b981">FEC</text>
+  <text x="142" y="306" font-family="ui-monospace, monospace" font-size="11" fill="#f1f5f9">Reed-Solomon RS(48,40) Galois 256 syndrome check cleared: 0 corrupted bytes, payload valid</text>
+  <text x="30" y="325" font-family="ui-monospace, monospace" font-size="9.5" fill="#64748b">[14:22:49]</text>
+  <rect x="94" y="315" width="38" height="13" rx="3" fill="#06b6d4" fill-opacity="0.15"/>
+  <text x="113" y="325" text-anchor="middle" font-family="ui-monospace, monospace" font-size="9" font-weight="700" fill="#06b6d4">SAVE</text>
+  <text x="142" y="325" font-family="ui-monospace, monospace" font-size="11" fill="#f1f5f9">Checkpoint exported: model_v1_converged.onnx (FP32 | 148 KB) -&gt; deployed to tturkayy.github.io</text>
 </svg>
