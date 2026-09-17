@@ -10,7 +10,7 @@ i design architectures, train models, and build tools to see what actually works
 
 most of my active experiments, live interactive demos, publications, and open-source projects live on my portfolio:
 
-👉 **[https://tturkayy.github.io/](https://tturkayy.github.io/)**
+**[https://tturkayy.github.io/](https://tturkayy.github.io/)**
 
 ---
 
