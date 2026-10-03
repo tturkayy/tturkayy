@@ -10,7 +10,7 @@
 
 most of my active experiments, live interactive demos, publications, and open-source projects live on my personal site:
 
-> **[tturkayy.github.io ↗](https://tturkayy.github.io/)**
+> **[turkay.dev ↗](https://turkay.dev/)**
 
 ---
 
